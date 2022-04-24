@@ -3,13 +3,15 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 require('./config/database');
+const articleController = require('./controllers/api/articles');
 
 // Middleware
 const app = express();
 app.use(logger('dev'));
 app.use(express.json());
+app.use("/articles", articleController);
 
-app.use(express.static(path.join(__dirname, 'build')));
+// app.use(express.static(path.join(__dirname, 'build')));
 
 // API routes
 
