@@ -2,18 +2,42 @@ import { Link } from 'react-router-dom';
 
 
 
-export default function NavBar() {
+export default function NavBar({ dest }) {
     return (
-        <nav className='nav-bar'>
-            <Link className="nav-link" to="/">
-                <h1>Home</h1>
-            </Link>
-            <Link className="nav-link" to="/destinations">
-                <div>Destinations</div>
-            </Link>
-            <Link className="nav-link" to="/destinations/new">
-                <div>Create Article</div>
-            </Link>
+        <nav className='navbar'>
+            <div className="navbar-collapse">
+                <ul className="navbar-nav mr-auto" >
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/">
+                            <div>Home</div>
+                        </Link>
+                    </li>
+                    <li className="nav-item dropdown">
+                        <Link className="nav-link dropdown-toggle" id="navbarDropdown" aria-expanded="false" data-toggle="dropdown" role="button" to="#">
+                            <div>Destinations</div>
+                        </Link>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {
+                                dest.map((city) => {
+                                    return (
+                                        <Link className='dropdown-item' to={`/destinations/id`}>{city.name}</Link>
+                                    )
+                                })
+                            }
+                        </div>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/destinations/new">
+                            <div>Create Article</div>
+                        </Link>
+                    </li>
+                </ul>
+            </div>
+
+
+
+
+
         </nav>
     )
 }
