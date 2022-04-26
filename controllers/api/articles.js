@@ -14,3 +14,11 @@ async function Index(req, res) {
     }
 };
 
+
+// Delete //
+
+// Update //
+
+// Create //
+
+// Show //

@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 
 
-export default function NavBar({ dest }) {
+export default function NavBar({ dest, setCity }) {
     return (
         <nav className='navbar'>
             <div className="navbar-collapse">
@@ -20,7 +21,10 @@ export default function NavBar({ dest }) {
                             {
                                 dest.map((city) => {
                                     return (
-                                        <Link className='dropdown-item' to={`/destinations/id`}>{city.name}</Link>
+                                        <>
+
+                                            <Link className='dropdown-item' to={`/destinations/${city.name}`}>{city.name}</Link>
+                                        </>
                                     )
                                 })
                             }
@@ -33,11 +37,14 @@ export default function NavBar({ dest }) {
                     </li>
                 </ul>
             </div>
-
+            <main className="outlet">
+                <Outlet />
+            </main>
 
 
 
 
         </nav>
+
     )
 }
