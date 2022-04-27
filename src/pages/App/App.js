@@ -12,7 +12,7 @@ import { Routes, Route } from 'react-router-dom';
 function App() {
     const [user, setUser] = useState(null);
     const [destinations, setDestinations] = useState([]);
-    const [city, setCity] = useState("");
+    const [city, setCity] = useState(false);
     useEffect(() => {
         (async () => {
             try {
@@ -23,7 +23,7 @@ function App() {
                 console.log(e)
             }
         })()
-    }, [])
+    }, [city])
 
     return (
         <main className="App">
@@ -32,7 +32,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Layout destinations={destinations} />} >
                         <Route index element={<HomePage />} />
-                        <Route path="/destinations/new" element={<NewDestPage />} />
+                        <Route path="/destinations/new" element={<NewDestPage city={city} setCity={setCity} />} />
                         <Route path="/destinations/:id" element={<CityShowPage destinations={destinations} />} />
                     </Route>
 
