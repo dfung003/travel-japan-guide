@@ -39,7 +39,6 @@ export default function Layout({ destinations, setCity }) {
                 </ul>
             </div>
             <main className="outlet">
-                <HomePage />
                 <Outlet />
             </main>
 
