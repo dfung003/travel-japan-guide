@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
-import HomePage from '../../pages/HomePage/HomePage';
 
 
 
-export default function Layout({ destinations, setCity }) {
+export default function Layout({ destinations }) {
     return (
         <nav className='navbar'>
             <div className="navbar-collapse">

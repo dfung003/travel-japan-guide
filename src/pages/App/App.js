@@ -30,7 +30,7 @@ function App() {
             {/* {user ? */}
             <>
                 <Routes>
-                    <Route path="/" element={<Layout setCity={setCity} destinations={destinations} />} >
+                    <Route path="/" element={<Layout destinations={destinations} />} >
                         <Route index element={<HomePage />} />
                         <Route path="/destinations/new" element={<NewDestPage />} />
                         <Route path="/destinations/:id" element={<CityShowPage destinations={destinations} />} />
