@@ -4,7 +4,7 @@ import AuthPage from '../AuthPage/AuthPage';
 import HomePage from '../HomePage/HomePage';
 import CityShowPage from '../CityShowPage/CityShowPage';
 import NewDestPage from '../NewDestPage/NewDestPage';
-import NavBar from '../../components/NavBar/NavBar';
+import Layout from '../../components/Layout/Layout';
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -30,8 +30,7 @@ function App() {
             {/* {user ? */}
             <>
                 <Routes>
-                    <Route path="/" element={<NavBar setCity={setCity} destinations={destinations} />} >
-                        {/* <Route path="/destinations" element={<DestinationPage />} /> */}
+                    <Route path="/" element={<Layout setCity={setCity} destinations={destinations} />} >
                         <Route path="/destinations/new" element={<NewDestPage />} />
                         <Route path="/destinations/:id" element={<CityShowPage destinations={destinations} />} />
                     </Route>
