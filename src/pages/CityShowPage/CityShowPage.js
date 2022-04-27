@@ -1,32 +1,33 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import axios from 'axios';
 
-export default function CityShowPage() {
-    const params = useParams()
-    const [objects, setObjects] = useState([])
+export default function CityShowPage({ destinations }) {
+    const { id } = useParams();
+    const [city, setCity] = useState({})
 
     const findById = (input) => {
+        console.log(input)
         const found = input.find((element) => {
-            return (element.name === params.id) // if element name matches city name in URL
+            console.log(id)
+            return (element.name === id) // if element name matches city name in URL
         })
-        setObjects(found) // take singular object and put it here
+        return found
     }
     useEffect(() => {
-        (async () => {
-            try {
-                const data = await axios.get('http://localhost:3000/articles');
-                setObjects(data.data);
-                findById(objects); // passing every article we have in backend
-                console.log(objects)
-            } catch (e) {
-                console.log(e)
-            }
-        })()
-    }, [])
+        try {
+            // setCity(data.data);
+            const foundCity = findById(destinations); // passing every article we have in backend
+            setCity(foundCity);
+        } catch (e) {
+            console.log(e)
+        }
+    }, [id])
+
     return (
         <main className="destination">
-            <h1>Show Page</h1>
+            <h1>{city.name}</h1>
+            <p>{city.population}</p>
+            <p>{city.description}</p>
         </main>
     )
 }

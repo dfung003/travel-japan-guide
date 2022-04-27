@@ -11,14 +11,14 @@ import { Routes, Route } from 'react-router-dom';
 
 function App() {
     const [user, setUser] = useState(null);
-    const [dest, setDest] = useState([]);
+    const [destinations, setDestinations] = useState([]);
     const [city, setCity] = useState("");
     useEffect(() => {
         (async () => {
             try {
-                const data = await fetch('http://localhost:3000/articles');
+                const data = await fetch('http://localhost:3001/articles');
                 const article = await data.json();
-                setDest(article)
+                setDestinations(article)
             } catch (e) {
                 console.log(e)
             }
@@ -30,10 +30,10 @@ function App() {
             {/* <NavBar dest={dest} /> */}
             {
                 <Routes>
-                    <Route path="/" element={<NavBar setCity={setCity} dest={dest} />} >
+                    <Route path="/" element={<NavBar setCity={setCity} destinations={destinations} />} >
                         {/* <Route path="/destinations" element={<DestinationPage />} /> */}
                         <Route path="/destinations/new" element={<NewDestPage />} />
-                        <Route path="/destinations/:id" element={<CityShowPage />} />
+                        <Route path="/destinations/:id" element={<CityShowPage destinations={destinations} />} />
                     </Route>
 
                 </Routes>

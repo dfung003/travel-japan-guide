@@ -8,9 +8,9 @@ const Destination = require('../models/Article');
 
     await Destination.deleteMany({});
     const destinations = await Destination.create([
-        { name: 'Tokyo', population: 60000 },
-        { name: 'Kyoto', population: 30000 },
-        { name: 'Osaka', population: 40000 }
+        { name: 'Tokyo', description: 'Tokyo', population: 60000 },
+        { name: 'Kyoto', description: 'Kyoto', population: 30000 },
+        { name: 'Osaka', description: 'Osaka', population: 40000 }
     ]);
 
     console.log(destinations)

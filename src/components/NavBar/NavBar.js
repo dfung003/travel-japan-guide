@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 
 
 
-export default function NavBar({ dest, setCity }) {
+export default function NavBar({ destinations, setCity }) {
     return (
         <nav className='navbar'>
             <div className="navbar-collapse">
@@ -19,7 +19,7 @@ export default function NavBar({ dest, setCity }) {
                         </Link>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                             {
-                                dest.map((city) => {
+                                destinations.map((city) => {
                                     return (
                                         <>
 
