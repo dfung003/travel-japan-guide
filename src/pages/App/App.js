@@ -1,6 +1,6 @@
 // import './App.css';
 import { useState, useEffect } from 'react';
-// import AuthPage from '../AuthPage/AuthPage';
+import AuthPage from '../AuthPage/AuthPage';
 import HomePage from '../HomePage/HomePage';
 import CityShowPage from '../CityShowPage/CityShowPage';
 import NewDestPage from '../NewDestPage/NewDestPage';
@@ -27,8 +27,8 @@ function App() {
 
     return (
         <main className="App">
-            {/* <NavBar dest={dest} /> */}
-            {
+            {/* {user ? */}
+            <>
                 <Routes>
                     <Route path="/" element={<NavBar setCity={setCity} destinations={destinations} />} >
                         {/* <Route path="/destinations" element={<DestinationPage />} /> */}
@@ -37,9 +37,10 @@ function App() {
                     </Route>
 
                 </Routes>
-
-                // <AuthPage setUser={setUser} />
-            }
+            </>
+            {/* :
+                <AuthPage setUser={setUser} />
+            } */}
         </main>
     );
 }
