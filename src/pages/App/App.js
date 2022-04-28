@@ -1,4 +1,4 @@
-// import './App.css';
+import './App.css';
 import { useState, useEffect } from 'react';
 import AuthPage from '../AuthPage/AuthPage';
 import HomePage from '../HomePage/HomePage';
@@ -18,7 +18,9 @@ function App() {
             try {
                 const data = await fetch('http://localhost:3001/articles');
                 const article = await data.json();
+                console.log("Article is " + article)
                 setDestinations(article)
+                console.log("The destination is " + destinations)
             } catch (e) {
                 console.log(e)
             }

@@ -43,11 +43,13 @@ export default function CityShowPage({ destinations, refresh, setRefresh }) {
         <main className="destination">
             <h1>{city.name}</h1>
             <h2>Description</h2>
-            <p>{city.description}</p>
+            <p className="white-space">{city.description}</p>
             <h2>Points of Interest</h2>
-            <p>{city.pointsOfInterest}</p>
+            <img className="show-images" src={city.imageOne} />
+            <p className="white-space">{city.pointsOfInterest}</p>
             <h2>Popular Food</h2>
-            <p>{city.popularFood}</p>
+            <img className="show-images" src={city.imageTwo} />
+            <p className="white-space">{city.popularFood}</p>
 
             <div className="show-buttons">
                 <button className="btn btn-danger" onClick={() => handleDelete(city._id)}>Delete Article</button>

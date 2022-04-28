@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom';
 
 export default function Layout({ destinations }) {
     return (
+
         <nav className='navbar'>
             <div className="navbar-collapse">
                 <ul className="navbar-nav mr-auto" >

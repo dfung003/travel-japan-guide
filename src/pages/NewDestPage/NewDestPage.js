@@ -6,13 +6,15 @@ export default function NewDestPage({ refresh, setRefresh }) {
     const name = useRef(null); // keeps track of what is in back end
     const description = useRef(null);
     const pointsOfInterest = useRef(null);
-    const image = useRef(null);
+    const imageOne = useRef(null);
+    const imageTwo = useRef(null);
     const popularFood = useRef(null);
 
     const navigate = useNavigate();
     const handleSubmit = async (evt) => {
         evt.preventDefault();
         try {
+            console.log(description.current.value)
             const response = await fetch("http://localhost:3001/articles", {
                 method: "POST", // switch GET to POST request
                 headers: { "Content-Type": "application/json" },
@@ -20,7 +22,9 @@ export default function NewDestPage({ refresh, setRefresh }) {
                     name: name.current.value, // create schema within body with key name, give ref from line 6
                     description: description.current.value,
                     pointsOfInterest: pointsOfInterest.current.value,
-                    popularFood: popularFood.current.value
+                    imageOne: imageOne.current.value,
+                    popularFood: popularFood.current.value,
+                    imageTwo: imageTwo.current.value
                 })
 
             })
@@ -32,6 +36,7 @@ export default function NewDestPage({ refresh, setRefresh }) {
         } catch (evt) {
             console.log(evt)
         }
+
     }
     return (
         <main className="new-dest-page">
@@ -54,10 +59,19 @@ export default function NewDestPage({ refresh, setRefresh }) {
                     </div>
 
                     <div className="form-group col">
+                        <label htmlFor="imageOne">First Image</label>
+                        <input className="form-control" name="imageOne" type="text" ref={imageOne} required />
+                    </div>
+
+                    <div className="form-group col">
                         <label htmlFor="popularFood">Popular Food</label>
                         <textarea className="form-control" name="popularFood" type="text" ref={popularFood} cols="50" rows="5" required />
                     </div>
 
+                    <div className="form-group col">
+                        <label htmlFor="imageTwo">Second Image</label>
+                        <input className="form-control" name="imageTwo" type="text" ref={imageTwo} required />
+                    </div>
                 </div>
 
 
