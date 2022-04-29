@@ -35,7 +35,7 @@ function App() {
                     <Route path="/" element={<Layout destinations={destinations} />} >
                         <Route index element={<HomePage />} />
                         <Route path="/destinations/new" element={<NewDestPage refresh={refresh} setRefresh={setRefresh} />} />
-                        <Route path="/destinations/:id" element={<CityShowPage destinations={destinations} refresh={refresh} setRefresh={setRefresh} />} />
+                        <Route path="/destinations/:id" element={<CityShowPage refresh={refresh} setRefresh={setRefresh} />} />
                     </Route>
 
                 </Routes>

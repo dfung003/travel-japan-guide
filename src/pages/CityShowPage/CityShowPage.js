@@ -1,30 +1,31 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-export default function CityShowPage({ destinations, refresh, setRefresh }) {
+export default function CityShowPage({ refresh, setRefresh }) {
     const { id } = useParams();
     const [city, setCity] = useState({})
     const navigate = useNavigate();
 
-    const findById = (input) => {
-        console.log(input)
-        const found = input.find((element) => {
-            console.log(id)
-            return (element.name === id) // if element name matches city name in URL
-        })
-        return found
-    }
+    // const findById = (input) => {
+    //     console.log(input)
+    //     const found = input.find((element) => {
+    //         console.log(id)
+    //         return (element.name === id) // if element name matches city name in URL
+    //     })
+    //     return found
+    // }
     useEffect(() => {
         (async () => {
             try {
-                // setCity(data.data);
-                const foundCity = findById(destinations); // passing every article we have in backend
-                setCity(foundCity);
+                const foundCity = await fetch(`http://localhost:3001/articles/${id}`)
+                const article = await foundCity.json()
+                setCity(article)
+
             } catch (e) {
                 console.log(e)
             }
         })()
-    }, [id])
+    }, [])
 
     const handleDelete = async (id) => {
         setRefresh(!refresh);
@@ -38,11 +39,10 @@ export default function CityShowPage({ destinations, refresh, setRefresh }) {
             console.log(e)
         }
     }
-    console.log(destinations)
+
     return (
         <main className="destination">
             <h1>{city.name}</h1>
-            <h2>Description</h2>
             <p className="white-space">{city.description}</p>
             <h2>Points of Interest</h2>
             <img className="show-images" src={city.imageOne} />

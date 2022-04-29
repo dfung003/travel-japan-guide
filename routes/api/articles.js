@@ -79,12 +79,14 @@ router.get("/:id", (req, res) => {
     // } catch (err) {
     //     res.status(400).json(err)
     // }
-    Article.findById(req.params.id, (err, foundArticle))
-    if (!err) {
-        res.status(200).json(foundArticle)
-    } else {
-        res.status(400).json(err)
-    }
+    Article.findById(req.params.id, (err, foundArticle) => {
+        if (!err) {
+            res.status(200).json(foundArticle)
+        } else {
+            res.status(400).json(err)
+        }
+    })
+
 })
 
 
