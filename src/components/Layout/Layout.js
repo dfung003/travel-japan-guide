@@ -8,13 +8,13 @@ export default function Layout({ destinations }) {
         <div className="layout-website">
             <nav className='navbar bg-light'>
                 <div className="navbar-collapse">
-                    <ul className="navbar-nav mr-auto d-flex" >
+                    <ul className="navbar-nav navbar-expand-lg mr-auto" >
                         <li className="nav-item">
                             <Link className="nav-link" to="/">
                                 <div className="navbar">Home</div>
                             </Link>
                         </li>
-                        <li className="nav-item dropdown d-flex w-75">
+                        <li className="nav-item dropdown">
                             <Link className="nav-link dropdown-toggle" id="navbarDropdown" aria-expanded="false" data-toggle="dropdown" role="button" to="#">
                                 <div>Destinations</div>
                             </Link>

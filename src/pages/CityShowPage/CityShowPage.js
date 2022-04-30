@@ -6,14 +6,6 @@ export default function CityShowPage({ refresh, setRefresh }) {
     const [city, setCity] = useState({})
     const navigate = useNavigate();
 
-    // const findById = (input) => {
-    //     console.log(input)
-    //     const found = input.find((element) => {
-    //         console.log(id)
-    //         return (element.name === id) // if element name matches city name in URL
-    //     })
-    //     return found
-    // }
     useEffect(() => {
         (async () => {
             try {
@@ -45,10 +37,10 @@ export default function CityShowPage({ refresh, setRefresh }) {
             <h1>{city.name}</h1>
             <p className="white-space">{city.description}</p>
             <h2>Points of Interest</h2>
-            <img className="show-images" src={city.imageOne} />
+            <img className="show-images" id="image-one" src={city.imageOne} />
             <p className="white-space">{city.pointsOfInterest}</p>
             <h2>Popular Food</h2>
-            <img className="show-images" src={city.imageTwo} />
+            <img className="show-images" id="image-two" src={city.imageTwo} />
             <p className="white-space">{city.popularFood}</p>
 
             <div className="show-buttons">
