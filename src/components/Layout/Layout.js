@@ -44,12 +44,12 @@ export default function Layout({ destinations }) {
                 </main>
 
             </nav>
-            <footer class="text-center">
-                <div class="content">
-                    <p class="footer">Created By Damon Fung</p>
+            <footer className="text-center">
+                <div className="content">
+                    <p className="footer">Created By Damon Fung</p>
                     <span style={{ fontSize: "150%" }}>
-                        <a class="footer-btn" href="https://github.com/dfung003" target="_blank"><i class="fab fa-github-square"></i></a>
-                        <a class="footer-btn" href="https://www.linkedin.com/in/damonfung27/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a className="footer-btn" href="https://github.com/dfung003" target="_blank"><i class="fab fa-github-square"></i></a>
+                        <a className="footer-btn" href="https://www.linkedin.com/in/damonfung27/" target="_blank"><i class="fab fa-linkedin"></i></a>
                     </span>
                 </div>
             </footer>

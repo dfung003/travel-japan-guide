@@ -35,7 +35,7 @@ async function create(req, res) {
         // in the client
         res.status(200).json(token);
     } catch (e) {
-        res.status(400).json(e);
+        res.status(400).json({ msg: e.message });
     }
 }
 

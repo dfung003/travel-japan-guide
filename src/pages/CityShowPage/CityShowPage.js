@@ -17,7 +17,7 @@ export default function CityShowPage({ refresh, setRefresh }) {
                 console.log(e)
             }
         })()
-    }, [])
+    }, [id])
 
     const handleDelete = async (id) => {
         setRefresh(!refresh);

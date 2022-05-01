@@ -24,4 +24,19 @@
 .navbar-nav {
     display: flex;
     justify-content: space-evenly;
+    background-color: #bc002d;
+}
+
+.nav-link {
+    color: white;
+}
+
+.text-center>.content {
+    background-color: #bc002d;
+    color: white;
+}
+
+.footer-btn {
+    color: white;
+    margin: 3px;
 }
