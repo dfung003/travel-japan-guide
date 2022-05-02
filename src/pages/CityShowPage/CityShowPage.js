@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export default function CityShowPage({ refresh, setRefresh }) {
@@ -44,6 +44,10 @@ export default function CityShowPage({ refresh, setRefresh }) {
             <p className="white-space">{city.popularFood}</p>
 
             <div className="show-buttons">
+                <button className="btn btn-danger" onClick={() => {
+                    console.log('button is working')
+                    navigate(`/destinations/${id}/edit`)
+                }}>Edit Article</button>
                 <button className="btn btn-danger" onClick={() => handleDelete(city._id)}>Delete Article</button>
             </div>
         </main>

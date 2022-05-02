@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { logout } from '../../utilities/users-service';
 
 
-export default function Layout({ destinations, user, setUser, showLogin, setShowLogin }) {
+export default function Layout({ destinations, user, setUser }) {
     const handleLogout = () => {
         logout()
         setUser(null)

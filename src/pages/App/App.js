@@ -7,6 +7,7 @@ import { getUser } from '../../utilities/users-service';
 import NewDestPage from '../NewDestPage/NewDestPage';
 import Layout from '../../components/Layout/Layout';
 import { Routes, Route } from 'react-router-dom';
+import EditPage from '../EditPage/EditPage';
 
 
 
@@ -38,6 +39,7 @@ function App() {
                         <Route path="/" element={<Layout user={user} setUser={setUser} showLogin={showLogin} setShowLogin={setShowLogin} destinations={destinations} />} >
                             <Route index element={<HomePage />} />
                             <Route path="/destinations/new" element={<NewDestPage refresh={refresh} setRefresh={setRefresh} />} />
+                            <Route path="/destinations/:id/edit" element={<EditPage refresh={refresh} setRefresh={setRefresh} />} />
                             <Route path="/destinations/:id" element={<CityShowPage refresh={refresh} setRefresh={setRefresh} />} />
                         </Route>
 

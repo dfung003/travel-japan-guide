@@ -28,7 +28,7 @@ export default function NewDestPage({ refresh, setRefresh }) {
                 })
 
             })
-            const data = await response.json();
+            // const data = await response.json();
             if (response.status === 200) {
                 setRefresh(!refresh) // changes boolean from true to false, rerenders fetch request when creating new schema and refreshes page
                 navigate("/") // goes back to Home Page

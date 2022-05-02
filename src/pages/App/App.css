@@ -1,3 +1,33 @@
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* .auth-page h3 {
+    margin-top: 4vmin;
+    text-align: center;
+    cursor: pointer;
+} */
+
+/* .form-container {
+    border: solid red 2px;
+    height: 50vh;
+    width: 50vw;
+    display: flex;
+    padding: 15px;
+} */
+
+.log-sign {
+    justify-content: left;
+}
+
+.input-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #image-one {
     float: left;
     margin-right: 20px;
