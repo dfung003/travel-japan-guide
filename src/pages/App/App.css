@@ -21,10 +21,25 @@
     width: 400px;
 }
 
+.home-container {
+    width: fit-content;
+    float: left;
+}
+
+.small-container {
+    width: fit-content;
+    float: right;
+}
+
+.region-img {
+    width: 70%;
+}
+
 .navbar-nav {
     display: flex;
     justify-content: space-evenly;
     background-color: #bc002d;
+    margin-bottom: 20px;
 }
 
 .nav-link {

@@ -16,14 +16,14 @@ app.use(express.json());
 // app.use(express.static(path.join(__dirname, 'build')));
 
 // Check if token and create req.user
-// app.use(require('./config/checkToken'));
+app.use(require('./config/checkToken'));
 
 // API routes
-// app.use("/api/users", require("./routes/api/users"));
-// const ensureLoggedIn = require('./config/ensureLoggedIn');
+app.use("/api/users", require("./routes/api/users"));
+const ensureLoggedIn = require('./config/ensureLoggedIn');
 
 app.use("/articles", articleController);
-// app.use("/api/articles", ensureLoggedIn, require("./routes/api/articles"))
+app.use("/api/articles", ensureLoggedIn, require("./routes/api/articles"))
 
 // Catch all route
 app.get('/*', function (req, res) {
