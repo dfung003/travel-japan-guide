@@ -1,14 +1,19 @@
 import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
+import { logout } from '../../utilities/users-service';
 
 
-
-export default function Layout({ destinations }) {
+export default function Layout({ destinations, user, setUser, showLogin, setShowLogin }) {
+    const handleLogout = () => {
+        logout()
+        setUser(null)
+    }
     return (
         <div className="layout-website">
             <nav className='navbar bg-light'>
                 <div className="navbar-collapse">
                     <ul className="navbar-nav navbar-expand-lg mr-auto" >
+
                         <li className="nav-item">
                             <Link className="nav-link" to="/">
                                 <div className="navbar">Home</div>
@@ -36,6 +41,8 @@ export default function Layout({ destinations }) {
                                 <div>Create Article</div>
                             </Link>
                         </li>
+                        <li className="login">Hello, {user.name}</li>
+                        <li className="login" onClick={handleLogout}>(logout?)</li>
                     </ul>
                 </div>
                 <main className="outlet">
