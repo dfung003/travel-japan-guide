@@ -36,11 +36,15 @@ export default function Layout({ destinations, user, setUser }) {
                                 }
                             </div>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/destinations/new">
-                                <div>Create Article</div>
-                            </Link>
-                        </li>
+                        {
+                            user.admin ?
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/destinations/new">
+                                        <div>Create Article</div>
+                                    </Link>
+                                </li> : null
+                        }
+
                         <li className="login">Hello, {user.name}</li>
                         <li className="login" onClick={handleLogout}>(logout?)</li>
                     </ul>

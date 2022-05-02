@@ -40,7 +40,7 @@ function App() {
                             <Route index element={<HomePage />} />
                             <Route path="/destinations/new" element={<NewDestPage refresh={refresh} setRefresh={setRefresh} />} />
                             <Route path="/destinations/:id/edit" element={<EditPage refresh={refresh} setRefresh={setRefresh} />} />
-                            <Route path="/destinations/:id" element={<CityShowPage refresh={refresh} setRefresh={setRefresh} />} />
+                            <Route path="/destinations/:id" element={<CityShowPage refresh={refresh} setRefresh={setRefresh} user={user} />} />
                         </Route>
 
                     </Routes>

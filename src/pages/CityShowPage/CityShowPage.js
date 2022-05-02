@@ -1,7 +1,7 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-export default function CityShowPage({ refresh, setRefresh }) {
+export default function CityShowPage({ refresh, setRefresh, user }) {
     const { id } = useParams();
     const [city, setCity] = useState({})
     const navigate = useNavigate();
@@ -42,14 +42,16 @@ export default function CityShowPage({ refresh, setRefresh }) {
             <h2>Popular Food</h2>
             <img className="show-images" id="image-two" src={city.imageTwo} />
             <p className="white-space">{city.popularFood}</p>
+            {user.admin ?
+                <div className="show-buttons">
+                    <button className="btn btn-danger" onClick={() => {
+                        console.log('button is working')
+                        navigate(`/destinations/${id}/edit`)
+                    }}>Edit Article</button>
+                    <button className="btn btn-danger" onClick={() => handleDelete(city._id)}>Delete Article</button>
+                </div> : null
+            }
 
-            <div className="show-buttons">
-                <button className="btn btn-danger" onClick={() => {
-                    console.log('button is working')
-                    navigate(`/destinations/${id}/edit`)
-                }}>Edit Article</button>
-                <button className="btn btn-danger" onClick={() => handleDelete(city._id)}>Delete Article</button>
-            </div>
         </main>
     )
 }
