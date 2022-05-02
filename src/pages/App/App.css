@@ -1,3 +1,7 @@
+.App {
+    font-family: 'Merriweather Sans', 'Helvetica', sans-serif;
+}
+
 .auth-page {
     display: flex;
     justify-content: center;
@@ -43,6 +47,10 @@
 .show-buttons {
     display: flex;
     justify-content: center;
+}
+
+.show-buttons>button {
+    margin: 10px;
 }
 
 .white-space {
@@ -101,12 +109,27 @@
     margin-bottom: 20px;
 }
 
+.navbar-nav>h3 {
+    color: white;
+    font-style: italic;
+}
+
 .nav-link {
     color: white;
 }
 
 .login {
     color: white;
+}
+
+.logout-btn {
+    color: white;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.logout-btn:hover {
+    color: black;
 }
 
 .text-center>.content {

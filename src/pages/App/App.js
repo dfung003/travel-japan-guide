@@ -24,7 +24,7 @@ function App() {
                 console.log("Article is " + article)
                 setDestinations(article)
                 console.log("The destination is " + destinations)
-                console.log(user)
+                // console.log(user)
             } catch (e) {
                 console.log(e)
             }

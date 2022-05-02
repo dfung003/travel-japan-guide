@@ -13,7 +13,7 @@ export default function Layout({ destinations, user, setUser }) {
             <nav className='navbar bg-light'>
                 <div className="navbar-collapse">
                     <ul className="navbar-nav navbar-expand-lg mr-auto" >
-
+                        <h3>Japan Travel Guide</h3>
                         <li className="nav-item">
                             <Link className="nav-link" to="/">
                                 <div className="navbar">Home</div>
@@ -46,7 +46,7 @@ export default function Layout({ destinations, user, setUser }) {
                         }
 
                         <li className="login">Hello, {user.name}</li>
-                        <li className="login" onClick={handleLogout}>(logout?)</li>
+                        <li className="logout-btn" onClick={handleLogout}>(logout?)</li>
                     </ul>
                 </div>
                 <main className="outlet">
