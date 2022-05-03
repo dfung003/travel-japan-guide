@@ -17,7 +17,10 @@ export default function HomePage() {
             <div className="learn-more">
                 <p>Learn more about Japan and its rich culture, popular sightseeing spots, and delicious food.</p>
             </div>
+            <br />
+            <a href="https://www.japan-guide.com/">Map (below) from</a><br />
             <img className="region-img" src="/assets/japan_map.png" />
+
         </main>
     )
 }
