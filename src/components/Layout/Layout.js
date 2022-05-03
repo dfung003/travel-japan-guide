@@ -11,7 +11,7 @@ export default function Layout({ destinations, user, setUser }) {
     return (
         <div className="layout-website">
             <nav className='navbar bg-light'>
-                <div className="navbar-collapse">
+                <div className="navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav navbar-expand-lg mr-auto" >
                         <h3>Japan Travel Guide</h3>
                         <li className="nav-item">
@@ -20,9 +20,9 @@ export default function Layout({ destinations, user, setUser }) {
                             </Link>
                         </li>
                         <li className="nav-item dropdown">
-                            <Link className="nav-link dropdown-toggle" id="navbarDropdown" aria-expanded="false" data-toggle="dropdown" role="button" to="#">
-                                <div>Destinations</div>
-                            </Link>
+                            <a className="nav-link dropdown-toggle" id="navbarDropdown" aria-expanded="false" data-toggle="dropdown" role="button" to="#">
+                                Destinations
+                            </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 {
                                     destinations.map((city) => {
