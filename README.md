@@ -8,8 +8,11 @@ This website was intended as a passion project for myself and anyone who is inte
 
 ## Technologies Used
 * HTML, CSS, JavaScript
-* NodeJS, Express, REACT
-* MongoDB, Heroku
+* Bootstrap v.4.6.1
+* NodeJS, Express
+* REACT
+* MongoDB/Mongoose 
+* Heroku
 * Postman
 * JWT User Authentication [more info](https://jwt.io/introduction)
 * Visual Studio Code

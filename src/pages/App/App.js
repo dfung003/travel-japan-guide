@@ -13,7 +13,6 @@ import EditPage from '../EditPage/EditPage';
 
 function App() {
     const [user, setUser] = useState(getUser());
-    const [showLogin, setShowLogin] = useState(false);
     const [destinations, setDestinations] = useState([]);
     const [refresh, setRefresh] = useState(false);
     useEffect(() => {
@@ -36,7 +35,7 @@ function App() {
             {user ?
                 <>
                     <Routes>
-                        <Route path="/" element={<Layout user={user} setUser={setUser} showLogin={showLogin} setShowLogin={setShowLogin} destinations={destinations} />} >
+                        <Route path="/" element={<Layout user={user} setUser={setUser} destinations={destinations} />} >
                             <Route index element={<HomePage />} />
                             <Route path="/destinations/new" element={<NewDestPage refresh={refresh} setRefresh={setRefresh} />} />
                             <Route path="/destinations/:id/edit" element={<EditPage refresh={refresh} setRefresh={setRefresh} />} />
