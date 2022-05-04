@@ -9,7 +9,7 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
     useEffect(() => {
         (async () => {
             try {
-                const foundCity = await fetch(`https://damon-travel-japan-guide.herokuapp.com/${id}`)
+                const foundCity = await fetch(`https://damon-travel-japan-guide.herokuapp.com/articles/${id}`)
                 const article = await foundCity.json()
                 setCity(article)
 
