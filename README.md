@@ -26,7 +26,7 @@ $ cd travel-guide-japan
 
 ## Getting Started
 ![Signup Form](/public/assets/signup_form.png)
-* You will be taken to a sign-up form where you will be able to sign up using your name, email address, and created password. 
+* You will be taken to a sign-up form where you will be able to sign up using your name, email address, and created password. <br />
 ![Login Form](/public/assets/login_form.png)
 * Once you have signed up, you should be taken to the home page. Or if you are logged out, press ```Go to login form``` in order to log in. You should be taken to the home page unless your credentials do not match.
 
