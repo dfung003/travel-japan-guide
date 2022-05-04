@@ -9,7 +9,7 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
     useEffect(() => {
         (async () => {
             try {
-                const foundCity = await fetch(`http://localhost:3001/articles/${id}`)
+                const foundCity = await fetch(`https://damon-travel-japan-guide.herokuapp.com/${id}`)
                 const article = await foundCity.json()
                 setCity(article)
 
@@ -24,7 +24,7 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
         navigate("/");
         console.log(id)
         try {
-            await fetch(`http://localhost:3001/articles/${id}`, {
+            await fetch(`https://damon-travel-japan-guide.herokuapp.com/articles/${id}`, {
                 method: "DELETE"
             })
         } catch (e) {
