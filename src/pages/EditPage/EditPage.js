@@ -28,7 +28,7 @@ export default function EditPage({ refresh, setRefresh }) {
     const handleSubmit = async (evt) => {
         evt.preventDefault(); // dont refresh page
         try {
-            const response = await fetch(`http://localhost:3001/articles/${id}`, {
+            const response = await fetch(`https://damon-travel-japan-guide.herokuapp.com/articles/${id}`, {
                 method: "PUT", // switch GET to PUTrequest
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
