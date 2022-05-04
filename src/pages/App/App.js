@@ -18,7 +18,7 @@ function App() {
     useEffect(() => {
         (async () => {
             try {
-                const data = await fetch('http://localhost:3001/articles');
+                const data = await fetch('https://damon-travel-japan-guide.herokuapp.com/articles');
                 const article = await data.json();
                 console.log("Article is " + article)
                 setDestinations(article)

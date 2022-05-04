@@ -15,7 +15,7 @@ export default function EditPage({ refresh, setRefresh }) {
     useEffect(() => {
         (async () => {
             try {
-                const foundCity = await fetch(`http://localhost:3001/articles/${id}`)
+                const foundCity = await fetch(`https://damon-travel-japan-guide.herokuapp.com/articles/${id}`)
                 const article = await foundCity.json()
                 setCity(article)
 

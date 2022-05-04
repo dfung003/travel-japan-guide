@@ -15,7 +15,7 @@ export default function NewDestPage({ refresh, setRefresh }) {
         evt.preventDefault();
         try {
             console.log(description.current.value)
-            const response = await fetch("http://localhost:3001/articles", {
+            const response = await fetch("https://damon-travel-japan-guide.herokuapp.com/articles", {
                 method: "POST", // switch GET to POST request
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
