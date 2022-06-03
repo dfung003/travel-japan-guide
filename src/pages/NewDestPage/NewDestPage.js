@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'; // lets you go from one page to 
 
 
 export default function NewDestPage({ refresh, setRefresh }) {
-    const name = useRef(null); // keeps track of what is in back end
+    const name = useRef(null); // keeps track of what is in back end, queries
     const description = useRef(null);
     const pointsOfInterest = useRef(null);
     const imageOne = useRef(null);
@@ -18,7 +18,7 @@ export default function NewDestPage({ refresh, setRefresh }) {
             const response = await fetch("https://damon-travel-japan-guide.herokuapp.com/articles", {
                 method: "POST", // switch GET to POST request
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
+                body: JSON.stringify({ // converts json to string
                     name: name.current.value, // create schema within body with key name, give ref from line 6
                     description: description.current.value,
                     pointsOfInterest: pointsOfInterest.current.value,

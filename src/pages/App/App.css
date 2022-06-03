@@ -103,12 +103,15 @@
 
 .navbar-nav {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     background-color: #bc002d;
     margin-bottom: 20px;
 }
 
+.logo {
+    width: 40%;
+}
 .navbar-nav>h3 {
     color: white;
     font-style: italic;
@@ -126,6 +129,7 @@
     color: white;
     cursor: pointer;
     text-decoration: underline;
+    margin-right: 2%;
 }
 
 .logout-btn:hover {

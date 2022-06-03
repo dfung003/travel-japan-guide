@@ -13,7 +13,8 @@ export default function Layout({ destinations, user, setUser }) {
             <nav className='navbar bg-light'>
                 <div className="navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav navbar-expand-lg mr-auto" >
-                        <h3>Japan Travel Guide</h3>
+                        {/* <h3>Japan Travel Guide</h3> */}
+                        <img className="logo" src="assets/japantravelguide_logo.png" />
                         <li className="nav-item">
                             <Link className="nav-link" to="/">
                                 <div className="navbar">Home</div>

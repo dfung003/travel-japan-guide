@@ -15,6 +15,8 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'build')));
 
+app.use(express.static('public'));
+
 // Check if token and create req.user
 app.use(require('./config/checkToken'));
 

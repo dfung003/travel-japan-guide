@@ -2,7 +2,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export default function CityShowPage({ refresh, setRefresh, user }) {
-    const { id } = useParams();
+    const { id } = useParams(); // grab id of an object (city) from URL, puts it into state variable
     const [city, setCity] = useState({})
     const navigate = useNavigate();
 
@@ -10,8 +10,10 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
         (async () => {
             try {
                 const foundCity = await fetch(`https://damon-travel-japan-guide.herokuapp.com/articles/${id}`)
+                // get request to backend database, get back an object, assigned to foundCity
                 const article = await foundCity.json()
-                setCity(article)
+                // variable set as the json-converted data
+                setCity(article) // change state variable
 
             } catch (e) {
                 console.log(e)
