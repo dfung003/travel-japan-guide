@@ -7,7 +7,8 @@ const articleSchema = new Schema({
     imageOne: String,
     pointsOfInterest: { type: String, required: true },
     imageTwo: String,
-    popularFood: { type: String, required: true }
+    popularFood: { type: String, required: true },
+    comments: [ { type: mongoose.Schema.Types.ObjectId, ref: 'Comment' } ]
 })
 
 module.exports = mongoose.model('Article', articleSchema);

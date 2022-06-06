@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Article = require('../../models/Article');
+const Comment = require('../../models/Comment');
+const check = require('../../config/ensureLoggedIn');
 
 
 // Index Route
@@ -55,6 +57,24 @@ router.delete("/:id", (req, res) => {
             res.status(400).json(err)
         }
     })
+})
+
+// Post Route
+
+router.post("/:id/comments/", check, async (req, res) => {
+
+    try {
+        const { body } = req
+        const article = await Article.findById(body)
+        const comment = new Comment(body)
+        comment.user = req.user_id
+        comment.save()
+        article.comments.push(comment._id)
+        article.save()
+        res.status(200).json({ message: "message saved" });
+    } catch (err) {
+        res.status(400).json(err)
+    }
 })
 
 // Show Route

@@ -1,11 +1,13 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function CityShowPage({ refresh, setRefresh, user }) {
     const { id } = useParams(); // grab id of an object (city) from URL, puts it into state variable
     const [city, setCity] = useState({})
+    const [toggle, setToggle] = useState(false);
     const navigate = useNavigate();
-
+    const content = useRef();
+    let token = localStorage.getItem('token');
     useEffect(() => {
         (async () => {
             try {
@@ -20,6 +22,24 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
             }
         })()
     }, [id])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const response = await fetch(`https://damon-travel-japan-guide.herokuapp.com/articles/${id}/comments`, {
+                method: "POST",
+                content: content.current.value
+            }, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            setToggle(!toggle)
+            navigate(`/destinations/${city._id}`)
+        } catch (e) {
+            console.log(e)
+        }
+    } 
 
     const handleDelete = async (id) => {
         setRefresh(!refresh);
@@ -44,6 +64,25 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
             <h2>Popular Food</h2>
             <img className="show-images" id="image-two" src={city.imageTwo} />
             <p className="white-space">{city.popularFood}</p>
+            <form onSubmit={handleSubmit}>
+                <p>Enter comment</p>
+                <input type="text" ref={content}></input>
+                <input type="submit" value="Add Comment" />
+            </form>
+            {
+                city.comments ? 
+                    <div>
+                        {
+                            city.comments.map((comment, idx) => {
+                                return (
+                                    <p>{ comment.content }</p>
+                                )
+                            })
+                        }
+                    </div>
+                    :
+                    ""
+            }
             {user.admin ?
                 <div className="show-buttons">
                     <button className="btn btn-danger" onClick={() => {
