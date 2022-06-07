@@ -8,6 +8,7 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
     const [toggle, setToggle] = useState(false);
     const navigate = useNavigate();
     const content = useRef();
+
     let token = localStorage.getItem('token');
     useEffect(() => {
         (async () => {
@@ -19,12 +20,14 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
                 })
                 // get request to backend database, get back an object, assigned to foundCity
                 setCity(foundCity.data.query) // change state variable
-                console.log("City is ", city)
+                // console.log("City is ", city)
             } catch (e) {
                 console.log(e)
             }
         })()
-    }, [refresh])
+    }, [refresh, toggle])
+
+    // const comments = [...city.comments];
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -38,6 +41,7 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
                 }
             })
             setToggle(!toggle)
+            content.current.value = ""
             navigate(`/destinations/${city._id}`)
         } catch (e) {
             console.log(e)
@@ -49,50 +53,59 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
         navigate("/");
         console.log(id)
         try {
-            await fetch(`https://damon-travel-japan-guide.herokuapp.com/articles/${id}`, {
+            await fetch(`/api/articles/${id}`, {
                 method: "DELETE"
             })
         } catch (e) {
             console.log(e)
         }
     }
-
+    console.log(city)
+    const comments = city.comments ? [...city.comments] : null
+    console.log(comments)
     return (
         <main className="destination">
             <h1>{city.name}</h1>
             <p className="white-space">{city.description}</p>
-            <h2>Points of Interest</h2>
-            <img className="show-images" id="image-one" src={city.imageOne} />
-            <p className="white-space">{city.pointsOfInterest}</p>
-            <h2>Popular Food</h2>
-            <img className="show-images" id="image-two" src={city.imageTwo} />
-            <p className="white-space">{city.popularFood}</p>
-            <form onSubmit={handleSubmit}>
-                <p>Enter comment</p>
-                <input type="text" ref={content}></input>
-                <input type="submit" value="Add Comment" />
-            </form>
-            {
-                city.comments ?
-                    <div>
-                        {
-                            city.comments.map((comment, idx) => {
-                                return (
-                                    <>
-                                        <div>
-                                            <p>{comment.userId.name}</p>
+            <div>
+                <div>
+                    <h2>Points of Interest</h2>
+                    <img className="show-images" id="image-one" src={city.imageOne} />
+                    <p className="white-space">{city.pointsOfInterest}</p>
+                </div>
+                <div>
+                    <h2>Popular Food</h2>
+                    <img className="show-images" id="image-two" src={city.imageTwo} />
+                    <p className="white-space">{city.popularFood}</p>
+                </div>
+            </div>
+            <div>
+                <form className="comment-form" onSubmit={handleSubmit}>
+                    <textarea rows="6" cols="10" placeholder="Enter comment here" ref={content}></textarea>
+                    <input type="submit" value="Add Comment" />
+                </form>
+                {
+                    city.comments ?
+                        <div className="comment-container">
+                            {
+                                comments.reverse().map((comment, idx) => {
+                                    return (
+                                        <div className="comment-thread">
+                                            <div style={{ borderRight: "solid black", paddingRight: "80px" }}>
+                                                <p>{comment.userId.name}</p>
+                                            </div>
+                                            <div>
+                                                <p>{comment.content}</p>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <p>{comment.content}</p>
-                                        </div>
-                                    </>
-                                )
-                            })
-                        }
-                    </div>
-                    :
-                    <p>No comments</p>
-            }
+                                    )
+                                })
+                            }
+                        </div>
+                        :
+                        <p>No comments</p>
+                }
+            </div>
             {user.admin ?
                 <div className="show-buttons">
                     <button className="btn btn-danger" onClick={() => {

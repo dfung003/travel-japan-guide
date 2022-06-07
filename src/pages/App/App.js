@@ -19,7 +19,7 @@ function App() {
     useEffect(() => {
         (async () => {
             try {
-                const data = await axios.get('https://damon-travel-japan-guide.herokuapp.com/articles');
+                const data = await axios.get(`/api/articles`);
                 console.log("Article is ", data)
                 setDestinations(data.data)
                 console.log("The destination is ", destinations)
