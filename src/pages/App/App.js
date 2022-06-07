@@ -9,6 +9,7 @@ import Layout from '../../components/Layout/Layout';
 import { Routes, Route } from 'react-router-dom';
 import EditPage from '../EditPage/EditPage';
 import axios from 'axios';
+const BASE_URL = 'https://damon-travel-japan-guide.herokuapp.com';
 
 
 
@@ -19,7 +20,7 @@ function App() {
     useEffect(() => {
         (async () => {
             try {
-                const data = await axios.get(`/api/articles`);
+                const data = await axios.get(`${BASE_URL}/articles`);
                 console.log("Article is ", data)
                 setDestinations(data.data)
                 console.log("The destination is ", destinations)

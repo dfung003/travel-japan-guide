@@ -1,6 +1,7 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+const BASE_URL = 'https://damon-travel-japan-guide.herokuapp.com'
 
 export default function CityShowPage({ refresh, setRefresh, user }) {
     const { id } = useParams(); // grab id of an object (city) from URL, puts it into state variable
@@ -13,7 +14,7 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
     useEffect(() => {
         (async () => {
             try {
-                const foundCity = await axios.get(`/api/articles/${id}`, {
+                const foundCity = await axios.get(`${BASE_URL}/api/articles/${id}`, {
                     headers: {
                         "Authorization": `Bearer ${token}`
                     }
@@ -32,7 +33,7 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post(`/api/articles/${id}/comments`, {
+            const response = await axios.post(`${BASE_URL}/api/articles/${id}/comments`, {
                 content: content.current.value,
                 userId: user._id
             }, {
