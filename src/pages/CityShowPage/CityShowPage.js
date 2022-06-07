@@ -50,13 +50,15 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
     }
 
     const handleDelete = async (id) => {
-        setRefresh(!refresh);
-        navigate("/");
+
         console.log(id)
         try {
-            await fetch(`${BASE_URL}/api/articles/${id}`, {
+            await fetch(`/api/articles/${id}`, {
                 method: "DELETE"
             })
+            navigate("/");
+            setRefresh(!refresh);
+
         } catch (e) {
             console.log(e)
         }

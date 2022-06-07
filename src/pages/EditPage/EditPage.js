@@ -15,15 +15,16 @@ export default function EditPage({ refresh, setRefresh }) {
     useEffect(() => {
         (async () => {
             try {
-                const foundCity = await fetch(`https://damon-travel-japan-guide.herokuapp.com/articles/${id}`)
+                const foundCity = await fetch(`/api/articles/${id}`)
                 const article = await foundCity.json()
-                setCity(article)
+                setCity(article.query)
 
             } catch (e) {
                 console.log(e)
             }
         })()
     }, [])
+    console.log(city)
 
     const handleSubmit = async (evt) => {
         evt.preventDefault(); // dont refresh page
