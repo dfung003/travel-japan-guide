@@ -54,7 +54,7 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
         navigate("/");
         console.log(id)
         try {
-            await fetch(`/api/articles/${id}`, {
+            await fetch(`${BASE_URL}/api/articles/${id}`, {
                 method: "DELETE"
             })
         } catch (e) {
