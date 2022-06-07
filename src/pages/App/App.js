@@ -20,7 +20,7 @@ function App() {
     useEffect(() => {
         (async () => {
             try {
-                const data = await axios.get(`${BASE_URL}/articles`);
+                const data = await axios.get(`${BASE_URL}/api/articles`);
                 console.log("Article is ", data)
                 setDestinations(data.data)
                 console.log("The destination is ", destinations)
