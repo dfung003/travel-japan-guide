@@ -1,5 +1,6 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
+import axios from "axios";
 
 export default function CityShowPage({ refresh, setRefresh, user }) {
     const { id } = useParams(); // grab id of an object (city) from URL, puts it into state variable
@@ -11,24 +12,26 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
     useEffect(() => {
         (async () => {
             try {
-                const foundCity = await fetch(`https://damon-travel-japan-guide.herokuapp.com/articles/${id}`)
+                const foundCity = await axios.get(`/api/articles/${id}`, {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                })
                 // get request to backend database, get back an object, assigned to foundCity
-                const article = await foundCity.json()
-                // variable set as the json-converted data
-                setCity(article) // change state variable
-
+                setCity(foundCity.data.query) // change state variable
+                console.log("City is ", city)
             } catch (e) {
                 console.log(e)
             }
         })()
-    }, [id])
+    }, [refresh])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await fetch(`https://damon-travel-japan-guide.herokuapp.com/articles/${id}/comments`, {
-                method: "POST",
-                content: content.current.value
+            const response = await axios.post(`/api/articles/${id}/comments`, {
+                content: content.current.value,
+                userId: user._id
             }, {
                 headers: {
                     "Authorization": `Bearer ${token}`
@@ -39,7 +42,7 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
         } catch (e) {
             console.log(e)
         }
-    } 
+    }
 
     const handleDelete = async (id) => {
         setRefresh(!refresh);
@@ -70,18 +73,25 @@ export default function CityShowPage({ refresh, setRefresh, user }) {
                 <input type="submit" value="Add Comment" />
             </form>
             {
-                city.comments ? 
+                city.comments ?
                     <div>
                         {
                             city.comments.map((comment, idx) => {
                                 return (
-                                    <p>{ comment.content }</p>
+                                    <>
+                                        <div>
+                                            <p>{comment.userId.name}</p>
+                                        </div>
+                                        <div>
+                                            <p>{comment.content}</p>
+                                        </div>
+                                    </>
                                 )
                             })
                         }
                     </div>
                     :
-                    ""
+                    <p>No comments</p>
             }
             {user.admin ?
                 <div className="show-buttons">

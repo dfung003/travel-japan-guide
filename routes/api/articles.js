@@ -65,7 +65,8 @@ router.post("/:id/comments/", check, async (req, res) => {
 
     try {
         const { body } = req
-        const article = await Article.findById(body)
+        const { id } = req.params
+        const article = await Article.findById(id)
         const comment = new Comment(body)
         comment.user = req.user_id
         comment.save()
@@ -79,16 +80,27 @@ router.post("/:id/comments/", check, async (req, res) => {
 
 // Show Route
 
-router.get("/:id", (req, res) => {
-
-    Article.findById(req.params.id, (err, foundArticle) => {
-        if (!err) {
-            res.status(200).json(foundArticle)
-        } else {
-            res.status(400).json(err)
-        }
-    })
-
+router.get('/:id', async (req, res) => {
+    try {
+        const query = await Article.findById(req.params.id).populate({
+            path: "comments",
+            populate: {
+                path: "userId",
+                model: "User"
+            }
+        })
+        res.status(200).json({ message: "All Good!", query })
+    } catch (e) {
+        res.status(400).json({ err: e })
+    }
+    
+    // query.exec((err, foundArticle) => {
+    //     if (!err) {
+    //         res.status(200).json({ message: "All Good!", foundArticle })
+    //     } else {
+    //         res.status(400).json({ err: error.message })
+    //     }
+    // })
 })
 
 

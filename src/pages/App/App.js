@@ -8,6 +8,7 @@ import NewDestPage from '../NewDestPage/NewDestPage';
 import Layout from '../../components/Layout/Layout';
 import { Routes, Route } from 'react-router-dom';
 import EditPage from '../EditPage/EditPage';
+import axios from 'axios';
 
 
 
@@ -18,11 +19,10 @@ function App() {
     useEffect(() => {
         (async () => {
             try {
-                const data = await fetch('https://damon-travel-japan-guide.herokuapp.com/articles');
-                const article = await data.json();
-                console.log("Article is " + article)
-                setDestinations(article)
-                console.log("The destination is " + destinations)
+                const data = await axios.get('https://damon-travel-japan-guide.herokuapp.com/articles');
+                console.log("Article is ", data)
+                setDestinations(data.data)
+                console.log("The destination is ", destinations)
                 // console.log(user)
             } catch (e) {
                 console.log(e)
@@ -35,7 +35,7 @@ function App() {
             {user ?
                 <>
                     <Routes>
-                        <Route path="/" element={<Layout user={user} setUser={setUser} destinations={destinations} />} >
+                        <Route path="/" element={<Layout user={user} setUser={setUser} refresh={refresh} setRefresh={setRefresh} destinations={destinations} />} >
                             <Route index element={<HomePage />} />
                             <Route path="/destinations/new" element={<NewDestPage refresh={refresh} setRefresh={setRefresh} />} />
                             <Route path="/destinations/:id/edit" element={<EditPage refresh={refresh} setRefresh={setRefresh} />} />

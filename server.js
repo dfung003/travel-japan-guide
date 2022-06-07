@@ -24,7 +24,6 @@ app.use(require('./config/checkToken'));
 app.use("/api/users", require("./routes/api/users"));
 const ensureLoggedIn = require('./config/ensureLoggedIn');
 
-app.use("/articles", articleController);
 app.use("/api/articles", ensureLoggedIn, require("./routes/api/articles"))
 
 // Catch all route
